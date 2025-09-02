@@ -1,13 +1,23 @@
-import 'aspersor.dart';  // Asegúrate que la ruta sea correcta
+import '../models/riegos.dart';
 
 class Lote {
   final int id;
   final String nombre;
-  final List<Aspersor> aspersores;
+  final List<Riego> riegos;
 
   Lote({
     required this.id,
     required this.nombre,
-    required this.aspersores,
-  });
+    List<Riego>? riegos,
+  }) : riegos = riegos ?? [];
+
+  factory Lote.fromJson(Map<String, dynamic> json) {
+    return Lote(
+      id: json['id'] as int,
+      nombre: json['nombre'] as String,
+      riegos: (json['riegos'] as List<dynamic>?)
+          ?.map((r) => Riego.fromJson(r as Map<String, dynamic>))
+          .toList() ?? [],
+    );
+  }
 }

@@ -1,5 +1,6 @@
 name: plantiq
 description: "A new Flutter project."
+# Evitar publicación accidental
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -14,6 +15,7 @@ dependencies:
   fl_chart: ^0.69.0
   http: ^1.2.2
   provider: ^6.0.0
+  shared_preferences: ^2.0.15
 
 dev_dependencies:
   flutter_test:
