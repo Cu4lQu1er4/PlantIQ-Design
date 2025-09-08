@@ -121,12 +121,20 @@ class _SettingsTabState extends State<SettingsTab> {
                     children: [
                       ElevatedButton(
                         style: ButtonStyle(
+<<<<<<< HEAD
                           backgroundColor: WidgetStateProperty.all(
+=======
+                          backgroundColor: MaterialStateProperty.all(
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             modoClaro
                                 ? Colors.grey[300]
                                 : const Color(0xFF1C1F2A),
                           ),
+<<<<<<< HEAD
                           fixedSize: WidgetStateProperty.all(
+=======
+                          fixedSize: MaterialStateProperty.all(
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             const Size(200, 30),
                           ),
                         ),
@@ -150,12 +158,20 @@ class _SettingsTabState extends State<SettingsTab> {
                       const SizedBox(height: 12),
                       ElevatedButton(
                         style: ButtonStyle(
+<<<<<<< HEAD
                           backgroundColor: WidgetStateProperty.all(
+=======
+                          backgroundColor: MaterialStateProperty.all(
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             modoClaro
                                 ? Colors.grey[300]
                                 : const Color(0xFF1C1F2A),
                           ),
+<<<<<<< HEAD
                           fixedSize: WidgetStateProperty.all(
+=======
+                          fixedSize: MaterialStateProperty.all(
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             const Size(200, 30),
                           ),
                         ),

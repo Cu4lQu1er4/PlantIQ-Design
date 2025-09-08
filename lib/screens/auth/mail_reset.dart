@@ -8,7 +8,11 @@ import '../auth/login_screen.dart';
 class SimpleHoverButton extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
+<<<<<<< HEAD
   const SimpleHoverButton({required this.onTap, required this.child, super.key});
+=======
+  const SimpleHoverButton({required this.onTap, required this.child, Key? key}) : super(key: key);
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverButtonState createState() => _SimpleHoverButtonState();
@@ -39,7 +43,11 @@ class _SimpleHoverButtonState extends State<SimpleHoverButton> {
 class SimpleHoverLink extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
+<<<<<<< HEAD
   const SimpleHoverLink({required this.onTap, required this.child, super.key});
+=======
+  const SimpleHoverLink({required this.onTap, required this.child, Key? key}) : super(key: key);
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverLinkState createState() => _SimpleHoverLinkState();

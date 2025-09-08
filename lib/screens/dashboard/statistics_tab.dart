@@ -178,7 +178,11 @@ class _StatisticsTabState extends State<StatisticsTab> {
               value: value,
               color: isPh ? Colors.greenAccent : Colors.blueAccent,
               radius: 55,
+<<<<<<< HEAD
               title: value.toStringAsFixed(1),
+=======
+              title: '${value.toStringAsFixed(1)}',
+>>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
               titleStyle: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
