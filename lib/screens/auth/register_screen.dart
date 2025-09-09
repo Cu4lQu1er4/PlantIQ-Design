@@ -8,11 +8,7 @@ import './login_screen.dart';
 class SimpleHoverButton extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
-<<<<<<< HEAD
-  const SimpleHoverButton({required this.onTap, required this.child, super.key});
-=======
   const SimpleHoverButton({required this.onTap, required this.child, Key? key}) : super(key: key);
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverButtonState createState() => _SimpleHoverButtonState();
@@ -43,11 +39,7 @@ class _SimpleHoverButtonState extends State<SimpleHoverButton> {
 class SimpleHoverLink extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
-<<<<<<< HEAD
-  const SimpleHoverLink({required this.onTap, required this.child, super.key});
-=======
   const SimpleHoverLink({required this.onTap, required this.child, Key? key}) : super(key: key);
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverLinkState createState() => _SimpleHoverLinkState();
@@ -184,7 +176,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     const SizedBox(height: 25),
-
                     if (_errorMessage != null)
                       Padding(
                         padding: const EdgeInsets.only(bottom: 20),
@@ -193,7 +184,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           style: const TextStyle(color: Colors.red, fontSize: 14),
                         ),
                       ),
-
                     Form(
                       key: _formKey,
                       child: Column(
@@ -208,8 +198,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             controller: _emailController,
                             style: const TextStyle(color: Color(0xFFE3E3E3)),
-                            decoration:
-                                _inputDecoration('Correo electrónico', Icons.email),
+                            decoration: _inputDecoration('Correo electrónico', Icons.email),
                             validator: (value) {
                               if (value!.isEmpty) return 'Por favor ingresa tu correo';
                               if (!value.contains('@')) return 'Correo inválido';
@@ -247,7 +236,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: SimpleHoverButton(
                               onTap: _isLoading ? () {} : _submitForm,
                               child: Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 8),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 35, vertical: 8),
                                 decoration: BoxDecoration(
                                   gradient: const LinearGradient(
                                     colors: [
@@ -321,7 +311,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   /// Campo de texto con validación básica
-  Widget _buildInput(TextEditingController controller, String label, IconData icon, String error) {
+  Widget _buildInput(
+      TextEditingController controller, String label, IconData icon, String error) {
     return TextFormField(
       controller: controller,
       style: const TextStyle(color: Color(0xFFE3E3E3)),

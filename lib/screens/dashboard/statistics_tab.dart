@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:plantiq/models/cultivo.dart';
 import '../../models/lote.dart';
 import '../../models/riegos.dart';
 import '../../services/api_service.dart';
@@ -12,23 +13,22 @@ class StatisticsTab extends StatefulWidget {
 }
 
 class _StatisticsTabState extends State<StatisticsTab> {
-  late Future<List<Lote>> futureLotes; // Cambié aquí a List<Lote>
+  late Future<List<Cultivo>> futureCultivos; // Cambié aquí a List<Lote>
   Lote? selectedLote;
   String chartType = 'line';
 
   @override
   void initState() {
     super.initState();
-    futureLotes =
-        ApiService.getLotes(); // Debe ser método que retorna List<Lote>
+    futureCultivos = ApiService.getCultivos();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF1C1F2A),
-      body: FutureBuilder<List<Lote>>(
-        future: futureLotes,
+      body: FutureBuilder<List<Cultivo>>(
+        future: futureCultivos,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -178,11 +178,6 @@ class _StatisticsTabState extends State<StatisticsTab> {
               value: value,
               color: isPh ? Colors.greenAccent : Colors.blueAccent,
               radius: 55,
-<<<<<<< HEAD
-              title: value.toStringAsFixed(1),
-=======
-              title: '${value.toStringAsFixed(1)}',
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
               titleStyle: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

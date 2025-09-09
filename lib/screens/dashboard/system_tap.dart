@@ -15,18 +15,12 @@ class _SystemTapState extends State<SystemTap> {
 
   int? numeroLotes;
   int? numeroAspersoresPorLote;
-<<<<<<< HEAD
-  String? tiempoRiegoManana;
-  String? tiempoRiegoTarde;
-  String? tiempoRiegoNoche;
-=======
-  int? numeroCamasPorLote;
-
-  String? duracion;
-  String? inicio;
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+  String? tiempoRiegoSeleccionado;
 
   final List<String> tiemposRiego = ['15 min', '30 min', '45 min', '60 min'];
+
+  // Simulación de token para autenticación, reemplazar según caso
+  final String token = 'tu_token_aqui';
 
   @override
   void dispose() {
@@ -36,37 +30,15 @@ class _SystemTapState extends State<SystemTap> {
   }
 
   Future<void> enviarCultivo() async {
-<<<<<<< HEAD
-    final String token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2Njk0MDU3LCJpYXQiOjE3NTY2OTM3NTcsImp0aSI6Ijk2MWJlYTIwMzU2OTQ1ZGZiZWI5YTgzOWRmYzAzZjE4IiwidXNlcl9pZCI6ImQ0OWE2OTkzLWFiZWUtNGZhMi04YWY2LTJhMDA3ZTUzODY2YiJ9.SecVSv2Hf43XQEHwWDhWZtgixTA9p1IEFYgBmvcF5ic';
-=======
-    final String token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2Njk0MDU3LCJpYXQiOjE3NTY2OTM3NTcsImp0aSI6Ijk2MWJlYTIwMzU2OTQ1ZGZiZWI5YTgzOWRmYzAzZjE4IiwidXNlcl9pZCI6ImQ0OWE2OTkzLWFiZWUtNGZhMi04YWY2LTJhMDA3ZTUzODY2YiJ9.SecVSv2Hf43XQEHwWDhWZtgixTA9p1IEFYgBmvcF5ic';
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-    final url = Uri.parse(
-      'http://127.0.0.1:8000/api/cultivos/',
-    ); // Cambia por tu IP y endpoint
+    final url = Uri.parse('http://127.0.0.1:8000/api/cultivos/');
 
-<<<<<<< HEAD
-  final body = {
-    'nombre_cultivo': nombreCultivoController.text.trim(),
-    'tipo_cultivo': tipoCultivoController.text.trim(),
-    'numero_lotes': numeroLotes ?? 1,
-    'numero_aspersores_por_lote': numeroAspersoresPorLote ?? 1,
-    'tiempo_riego_manana': tiempoRiegoManana ?? '15 min',
-    'tiempo_riego_tarde': tiempoRiegoTarde ?? '15 min',
-    'tiempo_riego_noche': tiempoRiegoNoche ?? '15 min',
-  };
-=======
-    final body = {
-      'nombre_cultivo': nombreCultivoController.text.trim(),
-      'tipo_cultivo': tipoCultivoController.text.trim(),
-      'numero_lotes': numeroLotes ?? 1,
-      'numero_aspersores_por_lote': numeroAspersoresPorLote ?? 1,
-      'numero_camas_por_lote': numeroCamasPorLote ?? 1,
-      'duracion_riego': duracion ?? tiemposRiego[0],
-      'inicio_riego': inicio ?? tiemposRiego[0],
+    Map<String, dynamic> body = {
+      "nombre_cultivo": nombreCultivoController.text.trim(),
+      "tipo_cultivo": tipoCultivoController.text.trim(),
+      "numero_lotes": numeroLotes,
+      "numero_aspersores_por_lote": numeroAspersoresPorLote,
+      "tiempo_riego": tiempoRiegoSeleccionado,
     };
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
     try {
       final response = await http.post(
@@ -90,9 +62,9 @@ class _SystemTapState extends State<SystemTap> {
         );
       }
     } catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text('Error de conexión: $e')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error de conexión: $e')),
+      );
     }
   }
 
@@ -108,20 +80,20 @@ class _SystemTapState extends State<SystemTap> {
       );
       return;
     }
+    if (numeroLotes == null || numeroAspersoresPorLote == null || tiempoRiegoSeleccionado == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Por favor selecciona todos los valores del formulario'),
+        ),
+      );
+      return;
+    }
 
     print('Nombre Cultivo: $nombre');
     print('Tipo de cultivo: $tipo');
     print('Número de lotes: $numeroLotes');
     print('Número de aspersores por lote: $numeroAspersoresPorLote');
-<<<<<<< HEAD
-    print('Tiempo riego mañana: $tiempoRiegoManana');
-    print('Tiempo riego tarde: $tiempoRiegoTarde');
-    print('Tiempo riego noche: $tiempoRiegoNoche');
-=======
-    print('Número de camas por lote: $numeroCamasPorLote');
-    print('Inicio riego: $inicio');
-    print('Duracion riego: $duracion');
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+    print('Tiempo de riego: $tiempoRiegoSeleccionado');
 
     enviarCultivo();
   }
@@ -325,75 +297,9 @@ class _SystemTapState extends State<SystemTap> {
 
                           const SizedBox(height: 20),
 
-<<<<<<< HEAD
                           DropdownButtonFormField<String>(
                             decoration: InputDecoration(
-                              labelText: "Tiempo de riego (mañana)",
-=======
-                          DropdownButtonFormField<int>(
-                            decoration: InputDecoration(
-                              labelText: "Número de camas por lote",
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                              labelStyle: const TextStyle(
-                                color: Color(0xFFE3E3E3),
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xFF1C1F2A),
-<<<<<<< HEAD
-=======
-                              prefixIcon: const Icon(
-                                Icons.numbers,
-                                color: Color(0xFFE3E3E3),
-                                size: 20,
-                              ),
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            dropdownColor: const Color(0xFF2B2F3A),
-                            style: const TextStyle(color: Color(0xFFE3E3E3)),
-<<<<<<< HEAD
-                            items: tiemposRiego
-                                .map(
-                                  (e) => DropdownMenuItem<String>(
-                                    value: e,
-                                    child: Text(e),
-                                  ),
-                                )
-                                .toList(),
-                            value: tiempoRiegoManana,
-                            onChanged: (value) {
-                              setState(() {
-                                tiempoRiegoManana = value;
-=======
-                            items: List.generate(10, (index) => index + 1)
-                                .map(
-                                  (e) => DropdownMenuItem<int>(
-                                    value: e,
-                                    child: Text(e.toString()),
-                                  ),
-                                )
-                                .toList(),
-                            value: numeroCamasPorLote,
-                            onChanged: (value) {
-                              setState(() {
-                                numeroCamasPorLote = value;
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                              });
-                            },
-                          ),
-
-                          const SizedBox(height: 20),
-
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-<<<<<<< HEAD
-                              labelText: "Tiempo de riego (tarde)",
-=======
-                              labelText: "Duracion riego (en minutos)",
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+                              labelText: "Tiempo de riego",
                               labelStyle: const TextStyle(
                                 color: Color(0xFFE3E3E3),
                               ),
@@ -414,69 +320,13 @@ class _SystemTapState extends State<SystemTap> {
                                   ),
                                 )
                                 .toList(),
-<<<<<<< HEAD
-                            value: tiempoRiegoTarde,
+                            value: tiempoRiegoSeleccionado,
                             onChanged: (value) {
                               setState(() {
-                                tiempoRiegoTarde = value;
-=======
-                            value: duracion,
-                            onChanged: (value) {
-                              setState(() {
-                                duracion = value;
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+                                tiempoRiegoSeleccionado = value;
                               });
                             },
                           ),
-
-                          const SizedBox(height: 20),
-
-                          DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-<<<<<<< HEAD
-                              labelText: "Tiempo de riego (noche)",
-=======
-                              labelText: "Inicio Riego",
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                              labelStyle: const TextStyle(
-                                color: Color(0xFFE3E3E3),
-                              ),
-                              filled: true,
-                              fillColor: const Color(0xFF1C1F2A),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                            ),
-                            dropdownColor: const Color(0xFF2B2F3A),
-                            style: const TextStyle(color: Color(0xFFE3E3E3)),
-                            items: tiemposRiego
-                                .map(
-                                  (e) => DropdownMenuItem<String>(
-                                    value: e,
-                                    child: Text(e),
-                                  ),
-                                )
-                                .toList(),
-<<<<<<< HEAD
-                            value: tiempoRiegoNoche,
-                            onChanged: (value) {
-                              setState(() {
-                                tiempoRiegoNoche = value;
-                              });
-                            },
-                          ),
-=======
-                            value: inicio,
-                            onChanged: (value) {
-                              setState(() {
-                                inicio = value;
-                              });
-                            },
-                          ),
-
-                          const SizedBox(height: 20),
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                         ],
                       ),
                     ),
@@ -503,8 +353,4 @@ class _SystemTapState extends State<SystemTap> {
       ),
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362

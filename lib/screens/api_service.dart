@@ -34,7 +34,7 @@ class ApiService {
   }
 
   static Future<List<Cultivo>> getCultivos() async {
-      final response = await http.get(Uri.parse('$baseUrl/cultivos-con-riegos/'));
+      final response = await http.get(Uri.parse('$baseUrl/cultivos/'));
 
       if (response.statusCode == 200) {
         List<dynamic> jsonList = jsonDecode(response.body);
@@ -46,21 +46,24 @@ class ApiService {
 
   // Método para editar riego (debe coincidir con tu API REST en backend)
   static Future<void> editarProgramacionRiego(Riego riego) async {
-    final response = await http.put(
-      Uri.parse('$baseUrl/riegos/${riego.id}/'),
-      headers: {'Content-Type': 'application/json'},
-      body: jsonEncode(riego.toJson()),
-    );
-    if (response.statusCode != 200) {
-      throw Exception('Error al editar riego');
+      final response = await http.put(
+        Uri.parse('$baseUrl/programacion_riego_admin/${riego.id}/'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode(riego.toJson()),
+      );
+      if (response.statusCode != 200) {
+        throw Exception('Error al editar riego');
+      }
     }
-  }
 
   // Método para eliminar riego
   static Future<void> eliminarProgramacionRiego(int id) async {
-    final response = await http.delete(Uri.parse('$baseUrl/riegos/$id/'));
-    if (response.statusCode != 204) {
-      throw Exception('Error al eliminar riego');
+      final response = await http.delete(
+        Uri.parse('$baseUrl/programacion_riego_admin/$id/'),
+      );
+      if (response.statusCode != 204) {
+        throw Exception('Error al eliminar riego');
+      }
     }
-  }
+
 }

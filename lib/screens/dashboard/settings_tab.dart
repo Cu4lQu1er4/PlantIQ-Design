@@ -107,9 +107,8 @@ class _SettingsTabState extends State<SettingsTab> {
               showDialog(
                 context: context,
                 builder: (context) => AlertDialog(
-                  backgroundColor: modoClaro
-                      ? Colors.white
-                      : const Color(0xFF2B2F3A),
+                  backgroundColor:
+                      modoClaro ? Colors.white : const Color(0xFF2B2F3A),
                   title: Text(
                     'Opciones de Autenticación',
                     style: TextStyle(
@@ -121,20 +120,10 @@ class _SettingsTabState extends State<SettingsTab> {
                     children: [
                       ElevatedButton(
                         style: ButtonStyle(
-<<<<<<< HEAD
-                          backgroundColor: WidgetStateProperty.all(
-=======
                           backgroundColor: MaterialStateProperty.all(
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                            modoClaro
-                                ? Colors.grey[300]
-                                : const Color(0xFF1C1F2A),
+                            modoClaro ? Colors.grey[300] : const Color(0xFF1C1F2A),
                           ),
-<<<<<<< HEAD
-                          fixedSize: WidgetStateProperty.all(
-=======
                           fixedSize: MaterialStateProperty.all(
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             const Size(200, 30),
                           ),
                         ),
@@ -149,29 +138,18 @@ class _SettingsTabState extends State<SettingsTab> {
                         child: Text(
                           'Cambiar Contraseña',
                           style: TextStyle(
-                            color: modoClaro
-                                ? Colors.black
-                                : const Color(0xFFE3E3E3),
+                            color:
+                                modoClaro ? Colors.black : const Color(0xFFE3E3E3),
                           ),
                         ),
                       ),
                       const SizedBox(height: 12),
                       ElevatedButton(
                         style: ButtonStyle(
-<<<<<<< HEAD
-                          backgroundColor: WidgetStateProperty.all(
-=======
                           backgroundColor: MaterialStateProperty.all(
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
-                            modoClaro
-                                ? Colors.grey[300]
-                                : const Color(0xFF1C1F2A),
+                            modoClaro ? Colors.grey[300] : const Color(0xFF1C1F2A),
                           ),
-<<<<<<< HEAD
-                          fixedSize: WidgetStateProperty.all(
-=======
                           fixedSize: MaterialStateProperty.all(
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
                             const Size(200, 30),
                           ),
                         ),
@@ -194,9 +172,8 @@ class _SettingsTabState extends State<SettingsTab> {
                       child: Text(
                         'Cancelar',
                         style: TextStyle(
-                          color: modoClaro
-                              ? Colors.black
-                              : const Color(0xFFE3E3E3),
+                          color:
+                              modoClaro ? Colors.black : const Color(0xFFE3E3E3),
                         ),
                       ),
                     ),
@@ -210,6 +187,7 @@ class _SettingsTabState extends State<SettingsTab> {
     );
   }
 }
+
 
 // EditarDatosUsuario y EditarDatosFinca mantienen la lógica y estilo que ya tenías,
 // pero adaptamos el color según modoClaro para un tema consistente.
@@ -244,12 +222,6 @@ class _EditarDatosUsuarioState extends State<EditarDatosUsuario> {
   );
 
   bool modoClaro = false;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // Aquí podrías pasar el modoClaro desde SettingsTab si quieres que se sincronice
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -320,9 +292,8 @@ class _EditarDatosUsuarioState extends State<EditarDatosUsuario> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: modoClaro
-                      ? Colors.blue
-                      : const Color(0xFF2B2F3A),
+                  backgroundColor:
+                      modoClaro ? Colors.blue : const Color(0xFF2B2F3A),
                 ),
                 child: Text(
                   'Guardar',
@@ -472,9 +443,8 @@ class _EditarDatosFincaState extends State<EditarDatosFinca> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: modoClaro
-                      ? Colors.blue
-                      : const Color(0xFF2B2F3A),
+                  backgroundColor:
+                      modoClaro ? Colors.blue : const Color(0xFF2B2F3A),
                 ),
                 child: Text(
                   'Guardar',

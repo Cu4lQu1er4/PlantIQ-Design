@@ -8,11 +8,7 @@ import '../auth/login_screen.dart';
 class SimpleHoverButton extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
-<<<<<<< HEAD
-  const SimpleHoverButton({required this.onTap, required this.child, super.key});
-=======
   const SimpleHoverButton({required this.onTap, required this.child, Key? key}) : super(key: key);
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverButtonState createState() => _SimpleHoverButtonState();
@@ -43,11 +39,7 @@ class _SimpleHoverButtonState extends State<SimpleHoverButton> {
 class SimpleHoverLink extends StatefulWidget {
   final VoidCallback onTap;
   final Widget child;
-<<<<<<< HEAD
-  const SimpleHoverLink({required this.onTap, required this.child, super.key});
-=======
   const SimpleHoverLink({required this.onTap, required this.child, Key? key}) : super(key: key);
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
 
   @override
   _SimpleHoverLinkState createState() => _SimpleHoverLinkState();
@@ -75,18 +67,18 @@ class _SimpleHoverLinkState extends State<SimpleHoverLink> {
 }
 
 class MailResetScreen extends StatefulWidget {
-  const MailResetScreen ({super.key});
+  const MailResetScreen({super.key});
 
   @override
-  State<MailResetScreen> createState() => _MailResetScreen();
+  State<MailResetScreen> createState() => _MailResetScreenState();
 }
 
-class _MailResetScreen extends State<MailResetScreen> {
+class _MailResetScreenState extends State<MailResetScreen> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
 
   void _submitForm() {
-    if (_formKey.currentState!.validate()){
+    if (_formKey.currentState!.validate()) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -119,7 +111,7 @@ class _MailResetScreen extends State<MailResetScreen> {
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
-                          context, 
+                          context,
                           MaterialPageRoute(builder: (context) => const PaginaInicio()),
                         );
                       },
@@ -143,7 +135,7 @@ class _MailResetScreen extends State<MailResetScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          //email
+                          // Email
                           TextFormField(
                             controller: _emailController,
                             style: const TextStyle(color: Color(0xFFE3E3E3)),
@@ -173,7 +165,7 @@ class _MailResetScreen extends State<MailResetScreen> {
                             },
                           ),
                           const SizedBox(height: 30),
-                          //botón 
+                          // Botón
                           Center(
                             child: SimpleHoverButton(
                               onTap: _submitForm,
@@ -199,7 +191,7 @@ class _MailResetScreen extends State<MailResetScreen> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          //enlace
+                          // Enlaces
                           Center(
                             child: RichText(
                               text: TextSpan(
@@ -274,7 +266,7 @@ class _MailResetScreen extends State<MailResetScreen> {
               ),
             ),
           ),
-        )
+        ),
       ),
     );
   }

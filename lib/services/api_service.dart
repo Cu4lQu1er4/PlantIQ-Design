@@ -1,15 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-<<<<<<< HEAD
-import '../models/programacion_riego.dart';
-import '../models/lote.dart'; // Asegúrate de importar tu modelo Lote
-
-class ApiService {
-  static const String baseUrl = 'http://127.0.0.1:8000/api';
-
-  // Headers con token JWT
-=======
 
 import '../models/sensor.dart';
 import '../models/programacion_riego.dart';
@@ -20,10 +11,10 @@ import '../models/lote.dart';
 import '../models/user_detail.dart';
 
 class ApiService {
-  static const String baseUrl = 'http://<tu-ip-local>:8000/api';
+  // Cambia 'http://<tu-ip-local>:8000/api' por la IP correcta de tu backend
+  static const String baseUrl = 'http://127.0.0.1:8000/api';
 
-  // Obtiene headers con token JWT
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+  // Obtiene headers con token JWT guardado en SharedPreferences
   static Future<Map<String, String>> getHeaders() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token') ?? '';
@@ -33,11 +24,6 @@ class ApiService {
     };
   }
 
-<<<<<<< HEAD
-  // 🔄 Obtener lista de programaciones de riego (Admin)
-  static Future<List<ProgramacionRiego>> getProgramacionesRiego() async {
-    final headers = await getHeaders();
-=======
   // Registro de usuario
   static Future<void> registerUser({
     required String firstName,
@@ -168,46 +154,18 @@ class ApiService {
 
   static Future<List<ProgramacionRiego>> getProgramacionesRiegoAdmin() async {
     final headers = await getHeaders();
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
     final url = Uri.parse('$baseUrl/programacion_riego_admin/');
     final response = await http.get(url, headers: headers);
 
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = json.decode(response.body);
-<<<<<<< HEAD
-      return jsonList.map((json) => ProgramacionRiego.fromJson(json)).toList();
-    } else {
-      throw Exception(
-        'Error al obtener programaciones: ${response.statusCode}',
-      );
-    }
-  }
-
-  // Nuevo: 🔄 Obtener lista de lotes
-  static Future<List<Lote>> getLotes() async {
-    final headers = await getHeaders();
-    final url = Uri.parse(
-      '$baseUrl/cultivos/',
-    ); // Cambia el endpoint si es distinto
-    final response = await http.get(url, headers: headers);
-
-    if (response.statusCode == 200) {
-      final List<dynamic> jsonList = json.decode(response.body);
-      return jsonList.map((json) => Lote.fromJson(json)).toList();
-    } else {
-      throw Exception('Error al obtener lotes: ${response.statusCode}');
-    }
-  }
-
-  // ➕ Crear nueva programación de riego
-=======
       return jsonList.map((j) => ProgramacionRiego.fromJson(j)).toList();
     } else {
       throw Exception('Error al obtener programaciones de riego admin');
     }
   }
 
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+  // Crear nueva programación de riego
   static Future<void> crearProgramacionRiego({
     required String inicio,
     required int duracion,
@@ -226,21 +184,13 @@ class ApiService {
         'numero_lotes': numeroLotes,
       }),
     );
-<<<<<<< HEAD
 
-    if (response.statusCode != 201) {
-      throw Exception('Error al crear riego: ${response.statusCode}');
-    }
-  }
-
-  // ✏️ Editar programación de riego
-=======
     if (response.statusCode != 201) {
       throw Exception('Error al crear programación de riego');
     }
   }
 
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+  // Editar programación de riego
   static Future<void> editarProgramacionRiego({
     required int id,
     required String inicio,
@@ -260,35 +210,24 @@ class ApiService {
         'numero_lotes': numeroLotes,
       }),
     );
-<<<<<<< HEAD
 
-    if (response.statusCode != 200) {
-      throw Exception('Error al editar riego: ${response.statusCode}');
-    }
-  }
-
-  // ❌ Eliminar programación de riego
-=======
     if (response.statusCode != 200) {
       throw Exception('Error al editar programación de riego');
     }
   }
 
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
+  // Eliminar programación de riego
   static Future<void> eliminarProgramacionRiego(int id) async {
     final headers = await getHeaders();
     final url = Uri.parse('$baseUrl/programacion_riego_admin/$id/');
     final response = await http.delete(url, headers: headers);
-<<<<<<< HEAD
 
-    if (response.statusCode != 204) {
-      throw Exception('Error al eliminar riego: ${response.statusCode}');
-=======
     if (response.statusCode != 204) {
       throw Exception('Error al eliminar programación de riego');
     }
   }
 
+  // Activar riego
   static Future<void> activarRiego(int id) async {
     final headers = await getHeaders();
     final url = Uri.parse('$baseUrl/programacion_riego/$id/activar_riego/');
@@ -364,7 +303,6 @@ class ApiService {
       return jsonList.map((j) => Cultivo.fromJson(j)).toList();
     } else {
       throw Exception('Error al obtener cultivos');
->>>>>>> 2dfc93e2206541f34e76fc08d2863eaf025db362
     }
   }
 }
